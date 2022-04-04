@@ -140,7 +140,7 @@ export class Artifact extends ArtifactBase {
       this.session.channels.error(applicableDemands.errors, this);
 
       if (applicableDemands.errors.length) {
-        throw Error('Error message from Artifact');
+        throw Error(i`Error message from Artifact`);
       }
 
       this.session.channels.warning(applicableDemands.warnings, this);

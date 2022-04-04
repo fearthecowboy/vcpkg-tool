@@ -7,6 +7,7 @@
 
 import { defaultClient, DistributedTracingModes, setup } from 'applicationinsights';
 import { createHash } from 'crypto';
+import { i } from './i18n';
 import { session } from './main';
 import { Version } from './version';
 
@@ -39,7 +40,7 @@ export function flushTelemetry() {
 
 defaultClient.addTelemetryProcessor((envelope, contextObjects) => {
   if (session.context['printmetrics']) {
-    session.channels.message(`Telemetry Event: \n${JSON.stringify(envelope.data, null, 2)}`);
+    session.channels.message(i`Telemetry Event: \n${JSON.stringify(envelope.data, null, 2)}`);
   }
 
   // only actually send telemetry if it's enabled.

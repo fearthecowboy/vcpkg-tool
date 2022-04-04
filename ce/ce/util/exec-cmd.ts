@@ -3,6 +3,7 @@
 
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import { lstat } from 'fs/promises';
+import { i } from '../i18n';
 
 export interface ExecOptions extends SpawnOptions {
   onCreate?(cp: ChildProcess): void;
@@ -43,10 +44,10 @@ export async function execute(command: string, cmdlineargs: Array<string>, optio
     command = command.replace(/"/g, '');
     const k = await lstat(command);
     if (k.isDirectory()) {
-      throw new Error(`Unable to call ${command} ${cmdlineargs.join(' ')} -- ${command} is a directory`);
+      throw new Error(i`Unable to call ${command} ${cmdlineargs.join(' ')} -- ${command} is a directory`);
     }
   } catch (e) {
-    throw new Error(`Unable to call ${command} ${cmdlineargs.join(' ')} - -- ${command} is not a file `);
+    throw new Error(i`Unable to call ${command} ${cmdlineargs.join(' ')} - -- ${command} is not a file `);
 
   }
 
@@ -81,7 +82,7 @@ export async function execute(command: string, cmdlineargs: Array<string>, optio
         stdout: out,
         stderr: err,
         log: all,
-        error: code ? new Error('Process Failed.') : null,
+        error: code ? new Error(i`Process Failed.`) : null,
         code,
         command: command,
         args: cmdlineargs,

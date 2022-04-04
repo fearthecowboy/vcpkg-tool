@@ -49,7 +49,7 @@ export class CacheCommand extends Command {
       return true;
     }
 
-    const table = new Table('File', 'Size', 'Date');
+    const table = new Table(i`File`, i`Size`, i`Date`);
     for (const [file, type] of files) {
       const stat = await file.stat();
       table.push(basename(file.fsPath), stat.size.toString(), new Date(stat.mtime).toString());

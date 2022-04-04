@@ -56,14 +56,14 @@ export class Registries implements Iterable<[Registry, Array<string>]> {
     // check if this is already recorded (by uri)
     let r = this.registries.get(location.toString());
     if (r && r !== registry) {
-      throw new Error(`Registry with location ${location.toString()} already loaded in this context`);
+      throw new Error(i`Registry with location ${location.toString()} already loaded in this context`);
     }
 
     // check if this is already recorded (by common name)
     if (name) {
       r = this.registries.get(name);
       if (r && r !== registry) {
-        throw new Error(`Registry with a different name ${name} already loaded in this context`);
+        throw new Error(i`Registry with a different name ${name} already loaded in this context`);
       }
       this.registries.set(name, registry);
     }

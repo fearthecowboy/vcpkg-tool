@@ -39,7 +39,7 @@ export class FindCommand extends Command {
     registries = (await this.project.manifest)?.registries ?? registries;
 
     debug(`using registries: ${[...registries].map(([registry, registryNames]) => registryNames[0]).join(', ')}`);
-    const table = new Table('Artifact', 'Version', 'Summary');
+    const table = new Table(i`Artifact`, i`Version`, i`Summary`);
 
     for (const each of this.inputs) {
       for (const [registry, id, artifacts] of await registries.search({ keyword: each, version: this.version.value })) {

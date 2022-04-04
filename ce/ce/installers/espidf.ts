@@ -97,6 +97,6 @@ export async function activateEspIdf(session: Session, targetLocation: Uri) {
 
   if (activateIdf.code) {
     session.channels.error(activateIdf.stderr);
-    throw new Error(`Failed to activate esp-idf - ${activateIdf.stderr}`);
+    throw new Error(i`Failed to activate esp-idf - ${activateIdf.stderr}`);
   }
 }

@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 import { isMap, isSeq } from 'yaml';
+import { i } from '../i18n';
 import { GitInstaller } from '../interfaces/metadata/installers/git';
 import { Installer as IInstaller } from '../interfaces/metadata/installers/Installer';
 import { NupkgInstaller } from '../interfaces/metadata/installers/nupkg';
@@ -45,7 +46,7 @@ export class Installs extends EntitySequence<Installer> {
         return new GitCloneNode(node, this);
       }
     }
-    throw new Error('Unsupported node type');
+    throw new Error(i`Unsupported node type`);
   }
 
   override *validate(): Iterable<ValidationError> {

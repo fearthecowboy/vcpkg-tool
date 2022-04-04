@@ -29,7 +29,7 @@ export class ListCommand extends Command {
   override async run() {
     if (this.installed.active) {
       const artifacts = await session.getInstalledArtifacts();
-      const table = new Table('Artifact', 'Version', 'Summary');
+      const table = new Table(i`Artifact`, i`Version`, i`Summary`);
 
       for (const { artifact, id, folder } of artifacts) {
 

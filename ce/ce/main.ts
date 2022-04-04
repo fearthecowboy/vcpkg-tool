@@ -36,15 +36,15 @@ import { Version as cliVersion } from './version';
 const commandline = new CommandLine(argv.slice(2));
 
 // try to set the locale based on the users's settings.
-setLocale(commandline.language, `${__dirname}/i18n/`);
+setLocale(commandline.language);
 
 function header() {
   if (!commandline.fromVCPKG) {
     if (commandline.debug) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      log(`${green.bold(`${product} command line utility`)} ${white.bold(cliVersion)} [node: ${white.bold(process.version)}; max-memory: ${white.bold(Math.round((require('v8').getHeapStatistics().heap_size_limit) / (1024 * 1024)) & 0xffffffff00)} gb]`);
+      log(`${green.bold(i`${product} command line utility`)} ${white.bold(cliVersion)} [node: ${white.bold(process.version)}; max-memory: ${white.bold(Math.round((require('v8').getHeapStatistics().heap_size_limit) / (1024 * 1024)) & 0xffffffff00)} gb]`);
     } else {
-      log(`${green.bold(`${product} command line utility`)} ${white.bold(cliVersion)}`);
+      log(`${green.bold(i`${product} command line utility`)} ${white.bold(cliVersion)}`);
     }
     log('');
   }

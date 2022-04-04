@@ -104,7 +104,7 @@ export class MetadataFile extends BaseMap implements Profile {
         content = JSON.stringify(this.document.toJSON(), null, 2);
         break;
       default:
-        throw new Error(`Unsupported file type ${extname(uri.path)}`);
+        throw new Error(i`Unsupported file type ${extname(uri.path)}`);
     }
     if (!content || content === 'null') {
       content = '{\n}';

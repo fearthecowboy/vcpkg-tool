@@ -37,7 +37,7 @@ specifiers:
   sorted-btree: 1.6.0
   source-map-support: 0.5.21
   tape: ^4.9.2
-  translate-strings: 1.0.11
+  translate-strings: 1.1.15
   txtgen: 2.2.8
   typescript: 4.5.5
   unbzip2-stream: 1.4.3
@@ -81,7 +81,7 @@ dependencies:
   sorted-btree: 1.6.0
   source-map-support: 0.5.21
   tape: 4.15.0
-  translate-strings: 1.0.11
+  translate-strings: 1.1.15
   txtgen: 2.2.8
   typescript: 4.5.5
   unbzip2-stream: 1.4.3
@@ -2499,8 +2499,8 @@ packages:
     resolution: {integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=}
     dev: false
 
-  /translate-strings/1.0.11:
-    resolution: {integrity: sha512-nMEc4UNwdNCjW+Rn3U0wTW91sUy1oYTF9PdKA3Y982PwqpiLdOD0RdKhS2UWxZzOOZTjGwauGM8RRdkqI8MYqw==}
+  /translate-strings/1.1.15:
+    resolution: {integrity: sha512-i+MCFlhap7lFE2hkLRihA8XS9EXjohsSqJk7zeLHqgp6g0djKpyhNfZ7RV83V9DQNxn+I+q//EC9uMopwZWDKQ==}
     engines: {node: '>=10.12.0'}
     hasBin: true
     dependencies:
@@ -2749,7 +2749,7 @@ packages:
     dev: false
 
   file:projects/vcpkg-ce.test.tgz:
-    resolution: {integrity: sha512-/bzmskWSXUXHuRaSwIgHnWdqLwXNGmtZlVM5fPazQCC/Q+clcXxZGpGPDapHNVFsvLKLQdFWCeSW9DE0Fb8Xag==, tarball: file:projects/vcpkg-ce.test.tgz}
+    resolution: {integrity: sha512-klUKkCyoQSAtn7Lpvc51ImuKWmVgcp+aZgflvPyizm4ekHREwJzLTvuG5Hl85plMQRenkpVsc0b6EgAo6yrIzg==, tarball: file:projects/vcpkg-ce.test.tgz}
     name: '@rush-temp/vcpkg-ce.test'
     version: 0.0.0
     dependencies:
@@ -2772,7 +2772,7 @@ packages:
     dev: false
 
   file:projects/vcpkg-ce.tgz:
-    resolution: {integrity: sha512-w5KSYh3XmlMetgClCJl9yaqPTwWOiuUZ91yXM/L3SUkpH8RL3Ti49xC7ma7Jq2/UaJVWSpu2o74mnvjE5P/xQg==, tarball: file:projects/vcpkg-ce.tgz}
+    resolution: {integrity: sha512-sGtTnakET8k3pwISmckLvhU55AZWWzC++zTWRnvKJYPEhM8qGPLxxzv9UekT/DHGhsfE3e7RKq2dsYjVf1Ac5A==, tarball: file:projects/vcpkg-ce.tgz}
     name: '@rush-temp/vcpkg-ce'
     version: 0.0.0
     dependencies:
@@ -2806,7 +2806,7 @@ packages:
       source-map-support: 0.5.21
       tar: 6.1.11
       tar-stream: 2.2.0
-      translate-strings: 1.0.11
+      translate-strings: 1.1.15
       typescript: 4.5.5
       unbzip2-stream: 1.4.3
       vscode-uri: 3.0.3

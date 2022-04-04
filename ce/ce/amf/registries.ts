@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 import { isMap, isSeq, YAMLMap } from 'yaml';
+import { i } from '../i18n';
 import { Dictionary } from '../interfaces/collections';
 import { ErrorKind } from '../interfaces/error-kind';
 import { RegistryDeclaration } from '../interfaces/metadata/metadata-format';
@@ -47,12 +48,12 @@ export class Registries extends Yaml<YAMLDictionary | YAMLSequence> implements D
 
   add(name: string, location?: Uri, kind?: string): RegistryDeclaration {
     if (this.get(name)) {
-      throw new Error(`Registry ${name} already exists.`);
+      throw new Error(i`Registry ${name} already exists.`);
     }
 
     this.assert(true);
     if (isMap(this.node)) {
-      throw new Error('Not Implemented as a map right now.');
+      throw new Error(i`Not Implemented as a map right now.`);
     }
     if (isSeq(this.node)) {
       const m = new YAMLMap();

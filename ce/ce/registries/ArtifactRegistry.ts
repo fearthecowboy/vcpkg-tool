@@ -6,6 +6,7 @@ import { MetadataFile } from '../amf/metadata-file';
 import { Artifact } from '../artifacts/artifact';
 import { Registry, SearchCriteria } from '../artifacts/registry';
 import { FileType } from '../fs/filesystem';
+import { i } from '../i18n';
 import { Session } from '../session';
 import { Queue } from '../util/promise';
 import { Uri } from '../util/uri';
@@ -63,7 +64,7 @@ export abstract class ArtifactRegistry implements Registry {
 
         if (!amf.isFormatValid) {
           for (const err of amf.formatErrors) {
-            repo.session.channels.warning(`Parse errors in metadata file ${err}}`);
+            repo.session.channels.warning(i`Parse errors in metadata file ${err}}`);
           }
           throw new Error('invalid yaml');
         }
@@ -81,7 +82,7 @@ export abstract class ArtifactRegistry implements Registry {
 
       } catch (e: any) {
         repo.session.channels.debug(e.toString());
-        repo.session.channels.warning(`skipping invalid metadata file ${uri.fsPath}`);
+        repo.session.channels.warning(i`skipping invalid metadata file ${uri.fsPath}`);
       }
     }
 
