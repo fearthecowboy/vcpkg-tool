@@ -46,4 +46,8 @@ export abstract class Switch implements Help {
     const v = this.values;
     return !!v && v.length > 0 && v[0] !== 'false';
   }
+
+  get isRange() {
+    return !!/[*[\]()~^]/.exec(this.value);
+  }
 }

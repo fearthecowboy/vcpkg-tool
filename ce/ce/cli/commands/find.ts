@@ -8,10 +8,11 @@ import { Registries } from '../../registries/registries';
 import { Command } from '../command';
 import { artifactIdentity } from '../format';
 import { Table } from '../markdown-table';
-import { debug, log } from '../styling';
+import { debug, error, log } from '../styling';
 import { Project } from '../switches/project';
 import { Registry } from '../switches/registry';
 import { Version } from '../switches/version';
+import { cyan } from 'chalk';
 
 export class FindCommand extends Command {
   readonly command = 'find';
@@ -42,15 +43,34 @@ export class FindCommand extends Command {
     const table = new Table('Artifact', 'Version', 'Summary');
 
     for (const each of this.inputs) {
-      for (const [registry, id, artifacts] of await registries.search({ keyword: each, version: this.version.value })) {
-        const latest = artifacts[0];
-        if (!latest.metadata.info.dependencyOnly) {
-          const name = artifactIdentity(latest.registryId, id, latest.shortName);
-          table.push(name, latest.metadata.info.version, latest.metadata.info.summary || '');
+
+      for (let [registry, id, artifacts] of await registries.search({
+        // use keyword search if no registry is specified
+        keyword: each.indexOf(':') === -1 ? each : undefined,
+
+        // otherwise use the criteria as an id
+        idOrShortName: each.indexOf(':') > -1 ? each : undefined,
+
+        version: this.version.value
+      })) {
+        if (!this.version.isRange) {
+          // if the user didn't specify a range, just show the latest version that was returned
+          artifacts = [artifacts[0]];
+        }
+
+        for (const result of artifacts) {
+          if (!result.metadata.info.dependencyOnly) {
+            const name = artifactIdentity(result.registryId, id, result.shortName);
+            table.push(name, result.metadata.info.version, result.metadata.info.summary || '');
+          }
         }
       }
     }
 
+    if (!table.any) {
+      error(i`No artifacts found matching criteria: ${cyan.bold(this.inputs.join(', '))}`);
+      return false;
+    }
     log(table.toString());
     log();
     return true;
